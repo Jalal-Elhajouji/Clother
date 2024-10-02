@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets'
 
 const Navbar = () => {
+
+    const [visibe, setVisible] = useState(false);
+
+
     return (
         <div className='flex items-center justify-between py-3 font-medium'>
 
@@ -45,6 +49,17 @@ const Navbar = () => {
                             <p className='cursor-pointer hover:text-black'>Orders</p>
                             <p className='cursor-pointer hover:text-black'>Global</p>
                         </div>
+                    </div>
+                </div>
+                <img onClick={ ()=>setVisible(true) } src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' alt="M" />
+            </div>
+
+            {/* menu for small screens */}
+            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${ visibe ? 'w-full' : 'w-0' } `}>
+                <div className='flex flex-col text-zinc-600'>
+                    <div onClick={()=>setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
+                        <img src={assets.dropdown_icon} className='h-4 rotate-180 ' alt="" />
+                        <p>Back</p>
                     </div>
                 </div>
             </div>
