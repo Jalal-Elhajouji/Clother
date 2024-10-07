@@ -1,15 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import Title from '../components/Title';
+import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
 
   const { products } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+
+  useEffect(() => {
+    setFilteredProducts(products);
+  },[])
 
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 broder-t '>
+    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 broder-t'>
 
       <div className='min-w-60'>
         <p onClick={() => { setShowFilter(!showFilter) }} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS
@@ -49,6 +57,7 @@ const Collection = () => {
 
       {/* Right side */}
       <div className='flex-1 '>
+
         <div className='flex justify-between text-base sm:text2xl mb-4'>
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
           {/* Sorting products */}
@@ -57,6 +66,15 @@ const Collection = () => {
             <option value="low-high">Low to High</option>
             <option value="high-low">High to Low</option>
           </select>
+        </div>
+
+        {/* List Products */}
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+          {
+            filteredProducts.map((item, index) => (
+              <ProductItem key={index} id={item._id} name={item.name} price={item.price} image={item.image}/>
+            ))
+          }
         </div>
       </div>
 
