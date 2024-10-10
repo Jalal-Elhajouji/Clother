@@ -15,21 +15,21 @@ const Collection = () => {
 
   const toggleCategory = (e) => {
 
-    if(category.includes(e.target.value)) {
-      setCategory( prev => prev.filter( item => item !== e.target.value ) )
+    if (category.includes(e.target.value)) {
+      setCategory(prev => prev.filter(item => item !== e.target.value))
     }
     else {
-      setCategory( prev => [ ...prev, e.target.value ] )
+      setCategory(prev => [...prev, e.target.value])
     }
   }
 
   const toggleSubCategory = (e) => {
 
-    if(subCategory.includes(e.target.value)) {
-      setSubCategory( prev => prev.filter( item => item !== e.target.value ) )
+    if (subCategory.includes(e.target.value)) {
+      setSubCategory(prev => prev.filter(item => item !== e.target.value))
     }
     else {
-      setSubCategory( prev => [ ...prev, e.target.value ] )
+      setSubCategory(prev => [...prev, e.target.value])
     }
   }
 
@@ -37,15 +37,15 @@ const Collection = () => {
 
     let productsreplica = products.slice();
 
-    if(category.length > 0) {
-      productsreplica = productsreplica.filter( item => category.includes(item.category) )
+    if (category.length > 0) {
+      productsreplica = productsreplica.filter(item => category.includes(item.category))
     }
-    if(subCategory.length > 0) {
-      productsreplica = productsreplica.filter( item => subCategory.includes(item.subCategory) )
+    if (subCategory.length > 0) {
+      productsreplica = productsreplica.filter(item => subCategory.includes(item.subCategory))
     }
     setFilteredProducts(productsreplica);
   }
-  
+
   const sortProducts = () => {
 
     let filteredProductsCopy = filteredProducts.slice();
@@ -66,7 +66,7 @@ const Collection = () => {
 
   useEffect(() => {
     setFilteredProducts(products);
-  },[])
+  }, [])
 
   useEffect(() => {
     applyFilter();
@@ -88,15 +88,15 @@ const Collection = () => {
           <p className='text-sm mb-3 font-medium'>CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-zinc-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" id='Men' value={'Men'} onChange={toggleCategory}/>
+              <input type="checkbox" id='Men' value={'Men'} onChange={toggleCategory} />
               <label htmlFor="Men">Men</label>
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" id='Women' value={'Women'} onChange={toggleCategory}/>
+              <input type="checkbox" id='Women' value={'Women'} onChange={toggleCategory} />
               <label htmlFor="Women">Women</label>
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" id='Kids' value={'Kids'} onChange={toggleCategory}/>
+              <input type="checkbox" id='Kids' value={'Kids'} onChange={toggleCategory} />
               <label htmlFor="Kids">Kids</label>
             </p>
           </div>
@@ -106,15 +106,15 @@ const Collection = () => {
           <p className='text-sm mb-3 font-medium'>TYPE</p>
           <div className='flex flex-col gap-2 text-sm font-light text-zinc-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" id='topwear' value={'Topwear'} onChange={toggleSubCategory}/>
+              <input type="checkbox" id='topwear' value={'Topwear'} onChange={toggleSubCategory} />
               <label htmlFor="topwear">Top Wear</label>
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" id='bottomwear' value={'Bottomwear'} onChange={toggleSubCategory}/>
+              <input type="checkbox" id='bottomwear' value={'Bottomwear'} onChange={toggleSubCategory} />
               <label htmlFor="bottomwear">Bottom Wear</label>
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" id='Winter Wear' value={'Winterwear'} onChange={toggleSubCategory}/>
+              <input type="checkbox" id='Winter Wear' value={'Winterwear'} onChange={toggleSubCategory} />
               <label htmlFor="Winter Wear">Winter Wear</label>
             </p>
           </div>
@@ -127,8 +127,8 @@ const Collection = () => {
         <div className='flex justify-between text-base sm:text2xl mb-4'>
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
           {/* Sorting products */}
-          <select onChange={(e) => (setSortType(e.target.value))} className='border-2 border-zinc-300 text-sm px-2 outline-none'>
-            <option value="relevent">Relevent Price</option>
+          <select onChange={(e) => (setSortType(e.target.value))} className='border border-zinc-300 text-sm px-2 outline-none'>
+            <option value="relevent">Relevent</option>
             <option value="low-high">Low to High</option>
             <option value="high-low">High to Low</option>
           </select>
@@ -138,7 +138,7 @@ const Collection = () => {
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
           {
             filteredProducts.map((item, index) => (
-              <ProductItem key={index} id={item._id} name={item.name} price={item.price} image={item.image}/>
+              <ProductItem key={index} id={item._id} name={item.name} price={item.price} image={item.image} />
             ))
           }
         </div>
@@ -148,4 +148,4 @@ const Collection = () => {
   )
 }
 
-export default Collection
+export default Collection;
