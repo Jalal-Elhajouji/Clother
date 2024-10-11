@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
+import RelatedProducts from '../components/RelatedProducts';
 
 const Product = () => {
 
@@ -23,7 +24,7 @@ const Product = () => {
 
   useEffect(() => {
     fetchProductData();
-  }, [products]);
+  }, [products, productId]);
 
   return productData ? (
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opcaity-100'>
@@ -59,7 +60,7 @@ const Product = () => {
           <p className='mt-5 text-3xl font-medium '>{currency}{productData.price}</p>
           <p className='mt-5 text-zinc-500 md:w-4/5'>{productData.description}</p>
           <div className='flex flex-col gap-4 my-8'>
-            <p >Select Size</p>
+            <p >Select Size:</p>
             <div className='flex gap-2'>
               {
                 productData.sizes.map((item, index) => (
@@ -88,7 +89,11 @@ const Product = () => {
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam consequatur, error asperiores molestiae animi quod voluptatem, facilis quaerat dignissimos odio ipsum hic molestias minus corrupti ratione voluptatibus repudiandae quae, quam laudantium aut iure soluta dolor enim vitae! Repellat eius ea expedita obcaecati illo debitis eos? Vel quaerat ipsum molestiae nihil!</p>
         </div>
       </div>
-      
+
+      {/* Related Products */}
+
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory} prodId={productData._id}/>
+
     </div>
   ) : <div className='opacity-0'></div>
 }
