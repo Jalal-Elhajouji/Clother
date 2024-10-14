@@ -98,4 +98,4 @@ const Product = () => {
   ) : <div className='opacity-0'></div>
 }
 
-export default Product
+export default Product;
