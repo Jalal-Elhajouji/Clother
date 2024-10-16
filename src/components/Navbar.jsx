@@ -58,7 +58,7 @@ const Navbar = () => {
                     <span className='absolute -top-2 -right-2 w-5 h-5 bg-zinc-600 text-xs text-white flex items-center justify-center rounded-full p-1'>{getCartCount()}</span>
                 </Link>
                 <div className='group relative'>
-                    <img src={assets.profile_icon} className='w-6 cursor-pointer' alt="profile" />
+                    <Link to='/login'><img src={assets.profile_icon} className='w-6 cursor-pointer' alt="profile" /></Link>
                     <div className='hidden group-hover:block absolute dropdown-menu right-0 pt-4'>
                         <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-200 text-zinc-600 rounded-md'>
                             <p className='cursor-pointer hover:text-black'>My Profile</p>
