@@ -48,10 +48,6 @@ const PlaceOrder = () => {
               <p className={`min-w-4 h-4 border rounded-full ${method === 'stripe' ? 'bg-emerald-400' : ''}`}></p>
               <img className='h-5 mx-3' src={assets.stripe_logo} alt="" />
             </div>
-            <div onClick={() => setMethod('razorpay')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
-              <p className={`min-w-4 h-4 border rounded-full ${method === 'razorpay' ? 'bg-emerald-400' : ''}`}></p>
-              <img className='h-5 mx-3' src={assets.razorpay_logo} alt="" />
-            </div>
             <div onClick={() => setMethod('cod')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
               <p className={`min-w-4 h-4 border rounded-full ${method === 'cod' ? 'bg-emerald-400' : ''}`}></p>
               <p className='text-zinc-600 text-sm font-medium mx-3'>CASH ON DELIVERY</p>
